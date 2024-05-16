@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,14 +13,18 @@ class HomeScreen extends StatefulWidget {
 List productName = ['CheesBurger','Hamburger','Hamburger','Hamburger'];
 List productDetail = ["Wendy'y Burger","Veggle Burger",'Chicken Burger','Fried Chicken Burger'];
 List productRating = ["4.9","4.8",'4.6','4.5'];
-List productImg = ["assets/images/foodimg1.svg","assets/images/foodimg2.svg",'assets/images/foodimg3.svg','assets/images/foodimg4.svg'];
+List productImg = ["assets/images/foodImg1png.png","assets/images/imagepng2.png",'assets/images/foodImgPng3.png',"assets/images/foodImgPng3.png"];
 
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       body:  SingleChildScrollView(
+        physics: AlwaysScrollableScrollPhysics(),
+        scrollDirection: Axis.vertical,
 
         child: Column(
           children: [
@@ -44,8 +49,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           )
                         ],
                       ),
-                 // const Text('Order your favourite food!',style: TextStyle(fontWeight: FontWeight.w400,height: 61,color: Color(0xFF3C2F2F),fontFamily: 'Poppins'),),
-
                    SearchBar(
                      surfaceTintColor: MaterialStatePropertyAll(Colors.white),
                     padding: const MaterialStatePropertyAll<EdgeInsets>(
@@ -67,29 +70,33 @@ class _HomeScreenState extends State<HomeScreen> {
         return  Card(
           surfaceTintColor: Colors.white,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-          child: Column(
-            children: [
-            // Container(
-            //     width: 60,
-            //     height: 60,
-            //     decoration: BoxDecoration(
-            //         color: Colors.blue,
-            //         image: DecorationImage(image: SvgPicture.asset('${productImg[index]}',width: 50,height: 50,),fit: BoxFit.cover),
-            //         shape: BoxShape.circle
-            //
-            //     ),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 15,bottom: 15,left: 10,right: 10),
+            child: Column(
+mainAxisAlignment: MainAxisAlignment.start,
 
-              SvgPicture.asset('${productImg[index]}',width: 50,height: 50,fit: BoxFit.contain,),
-        Text("${productName[index]}"),
-            Text('${productDetail[index]}'),
-
-          Row(
-            children: [
-              Image(image: AssetImage('assets/images/star.png')),
-              Text('${productRating[index]}'),
+              children: [
+                Container(
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                        // color: Colors.blue,
+                        image: DecorationImage(image: AssetImage('${productImg[index]}'),fit: BoxFit.cover),
+                        shape: BoxShape.circle
+                    ),),
+              Text("${productName[index]}",textAlign: TextAlign.end,),
+              Text('${productDetail[index]}'),
+            Row(
+              children: [
+                Image(image: AssetImage('assets/images/star.png')),
+               Expanded (
+                    child: Text('${productRating[index]}'),flex: 1,
+                ),
+                SvgPicture.asset('assets/images/heart.svg'),
+              ],
+            ),
             ],
-          ),
-          ],
+            ),
           ),
         );
                       },
@@ -102,27 +109,32 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Color(0xFFEF2A39),
+
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.business),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: '',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: (value) {
+
+        },
+      ),
 
 
 
-      // Row(
-      //
-      //   children: [
-      //     Column(
-      //       children: [
-      //         Text('Order your favourite food!',style: TextStyle(fontWeight: FontWeight.w400,height: 61,color: Color(0xFF3C2F2F),fontFamily: 'Poppins'),),
-      //       ],
-      //     ),
-      //     Container(
-      //
-      //       width: 106,
-      //       height: 73,
-      //       decoration: BoxDecoration(
-      //           color: Colors.blue,
-      //
-      //           image: DecorationImage(image: AssetImage('assets/images/profilePhoto.png'))),)
-      //   ],
-      // ),
       
     );
   }
