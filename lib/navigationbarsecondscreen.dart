@@ -1,16 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:footgo/Screens/comment_screen.dart';
-import 'package:footgo/Screens/home_screen.dart';
-import 'package:footgo/Screens/user_screen.dart';
-import 'package:flutter/material.dart';
-import 'Homemenu_screen.dart';
-import 'heart_screen.dart';
-
-
-
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:footgo/app_color.dart';
+import 'package:footgo/commentpage.dart';
+import 'package:footgo/heartpage.dart';
+import 'package:footgo/HomeScreenBloc/homescreen.dart';
+import 'package:footgo/userpage.dart';
 /*
 class BottomNavigationbarforItems extends StatefulWidget {
   @override
@@ -155,40 +150,46 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Container(
+      resizeToAvoidBottomInset: false,
+      extendBody: false,
+      extendBodyBehindAppBar: false,
 
-        padding: const EdgeInsets.only(bottom: 10,),
-        child: FloatingActionButton(
-          elevation: 10,
 
-          backgroundColor: Color(0xffEF2A39),
-          shape: CircleBorder(),
-          onPressed: () {},
-          child:
-         // Image(image: AssetImage('assets/images/addNewImgpng.png'),)
-         // SvgPicture.asset('assets/images/addSvgImgnew.svg',height: 25,width: 25,)
-         const Icon(Icons.add,color: Colors.white,weight: 100,),
-        //  Image(image: AssetImage('assets/images/iconAdd.png',),fit: BoxFit.cover,width: 20,height: 20,)
+      floatingActionButton: Visibility(
+        visible: MediaQuery.of(context).viewInsets.bottom == 0.0,
+
+        child: Container(
+
+          padding: const EdgeInsets.only(bottom: 10,),
+          child: FloatingActionButton(
+            isExtended: false,
+            elevation: 10,
+            backgroundColor: Color(0xffEF2A39),
+            shape: const CircleBorder(),
+            onPressed: () {},
+            child:
+            const Icon(Icons.add,color: Colors.white,weight: 100,),
+          ),
         ),
       ),
       bottomNavigationBar: Container(
-        height: 90,
+        height: MediaQuery.of(context).viewInsets.bottom == 0?100.sp:0,
 
-        child: BottomAppBar(
-
-          color: Color(0xffEF2A39),
-          // padding: EdgeInsets.all(20),
-          height: 80,
-          shape:  CircularNotchedRectangle(),
-          notchMargin: 10.0,
+       child:
+        BottomAppBar(
+          color:  AppColor.red,
+          //height: MediaQuery.of(context).size.height/10,
+          shape:  const CircularNotchedRectangle(),
+          notchMargin: 10.0.sp,
           clipBehavior: Clip.antiAlias,
-          child: BottomNavigationBar(
+          child:
+          BottomNavigationBar(
             showUnselectedLabels: true,
             showSelectedLabels: true,
             selectedItemColor: Colors.white,
             type: BottomNavigationBarType.fixed,
-            selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-            backgroundColor:  Color(0xffEF2A39),
+            selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+            backgroundColor: AppColor.red,
             elevation: 0,
             currentIndex: _selectedIndex,
             onTap: (index) {
@@ -201,7 +202,7 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
               BottomNavigationBarItem(
                 icon: Image(image: AssetImage('assets/images/home.png')),
                 label: '.',
-               // activeIcon: Text('.')
+                // activeIcon: Text('.')
               ),
               BottomNavigationBarItem(
                 icon: Image(image: AssetImage('assets/images/user.png')),
@@ -220,19 +221,20 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
         ),
       ),
       body: PageView(
+        physics: NeverScrollableScrollPhysics(),
         controller: pageController,
         children: const <Widget>[
           Center(
             child: HomeScreen(),
           ),
           Center(
-            child: LoginScreen(),
+            child: UserPage(),
           ),
           Center(
-            child: CommentScreen(),
+            child: CommentPage(),
           ),
           Center(
-            child: MyHomePage(),
+            child: HeartPage(),
           ),
         ],
       ),
