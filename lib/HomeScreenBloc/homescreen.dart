@@ -261,14 +261,14 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:footgo/product.dart';
+import 'package:footgo/model/product.dart';
 import 'package:footgo/ProductBloc/productScreen.dart';
 import 'package:footgo/widgets.dart';
 import 'home_screen_bloc.dart';
 import 'home_screen_event.dart';
 import 'home_screen_state.dart';
-import '../app_color.dart';
-import '../app_string.dart';
+import '../config/app_color.dart';
+import '../config/app_string.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -467,7 +467,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             label: Text('${choiceItemsList[index]}'),
                             selected: selectedIndex == index,
                             onSelected: (bool selected) {
-                             // homeBloc.add(LoadedChipsListEvent(index: index));
                               setState(() {
                                  selectedIndex = index;
                                 filterProducts(searchController.text);
@@ -490,118 +489,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       itemBuilder: (context, index) {
                         return card(index: index);
-                        //   Card(
-                        //   semanticContainer: true,
-                        //   elevation: 8,
-                        //   shadowColor: AppColor.greyShadowCard,
-                        //   surfaceTintColor: AppColor.white,
-                        //   shape: RoundedRectangleBorder(
-                        //       borderRadius: BorderRadius.circular(30)),
-                        //   child: Padding(
-                        //     padding: const EdgeInsets.only(
-                        //       left: 15,
-                        //       right: 10,
-                        //     ),
-                        //     child: Column(
-                        //       children: [
-                        //         GestureDetector(
-                        //           child: Column(
-                        //             crossAxisAlignment:
-                        //                 CrossAxisAlignment.start,
-                        //             children: [
-                        //               Container(
-                        //                 decoration: BoxDecoration(
-                        //                     image: DecorationImage(
-                        //                         image: AssetImage(
-                        //                             filteredProductNames[index].productImage))),
-                        //                 height: 70.sp,
-                        //               ),
-                        //               AllWidgets.customText(
-                        //                   data:
-                        //                       filteredProductNames[index].productName,
-                        //                   fontWeight: FontWeight.bold,
-                        //                   fontSize: 15.sp),
-                        //               AllWidgets.customText(
-                        //                   data:
-                        //                       filteredProductNames[index].productDetail,
-                        //                   fontSize: 15.sp),
-                        //             ],
-                        //           ),
-                        //           onTap: () {
-                        //             homeBloc.add(HomeScreenNavigateEvent(
-                        //                 pri: filteredProductNames[index]
-                        //                     .productprice));
-                        //           },
-                        //         ),
-                        //         heartButton(index: index,onPressed: () {
-                        //           setState(() {
-                        //             if (blankList.contains(
-                        //                 filteredProductNames[index]
-                        //                     .productName
-                        //                     .toString())) {
-                        //               blankList.remove(
-                        //                   filteredProductNames[index]
-                        //                       .productName
-                        //                       .toString());
-                        //             } else {
-                        //               blankList.add(
-                        //                   filteredProductNames[index]
-                        //                       .productName
-                        //                       .toString());
-                        //             }
-                        //           });
-                        //         },),
-                        //       /*  Row(
-                        //           children: [
-                        //             const Image(
-                        //                 image: AssetImage(
-                        //                     'assets/images/star.png')),
-                        //             const SizedBox(
-                        //               width: 5,
-                        //             ),
-                        //             Expanded(
-                        //               flex: 1,
-                        //               child: AllWidgets.customText(
-                        //                   data:
-                        //                       filteredProductNames[index].productRating,
-                        //                   fontWeight: FontWeight.bold,
-                        //                   fontSize: 15),
-                        //             ),
-                        //             IconButton(
-                        //               onPressed: () {
-                        //                 setState(() {
-                        //                   if (blankList.contains(
-                        //                       filteredProductNames[index]
-                        //                           .productName
-                        //                           .toString())) {
-                        //                     blankList.remove(
-                        //                         filteredProductNames[index]
-                        //                             .productName
-                        //                             .toString());
-                        //                   } else {
-                        //                     blankList.add(
-                        //                         filteredProductNames[index]
-                        //                             .productName
-                        //                             .toString());
-                        //                   }
-                        //                 });
-                        //               },
-                        //               icon: !(blankList.contains(
-                        //                       filteredProductNames[index]
-                        //                           .productName
-                        //                           .toString()))
-                        //                   ? SvgPicture.asset(
-                        //                       'assets/images/heart.svg')
-                        //                   : const Icon(CupertinoIcons.heart_fill,
-                        //                       color: Colors.red),
-                        //               //child:
-                        //             ),
-                        //           ],
-                        //         ),*/
-                        //       ],
-                        //     ),
-                        //   ),
-                        // );
                       },
                       itemCount: value == 0
                           ? filteredProductNames.length
@@ -619,8 +506,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 }));
               }
             },
-
-            // child:
           ),
         ),
       ),
@@ -684,14 +569,9 @@ class _HomeScreenState extends State<HomeScreen> {
             prefixIcon: const Icon(Icons.search),
           ),
           onChanged: onChanged
-          //     (value) {
-          //   filterProducts(value);
-          // },
-          // _onSearch,
           ),
     );
   }
-
   Widget settingButton() {
     return Container(
       margin: const EdgeInsets.only(left: 15),
@@ -715,7 +595,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
   Widget heartButton({ required int index ,required Function()? onPressed }){
     return Row(
       children: [
@@ -733,24 +612,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         IconButton(
           onPressed: onPressed,
-          //     () {
-          //   setState(() {
-          //     if (blankList.contains(
-          //         filteredProductNames[index]
-          //             .productName
-          //             .toString())) {
-          //       blankList.remove(
-          //           filteredProductNames[index]
-          //               .productName
-          //               .toString());
-          //     } else {
-          //       blankList.add(
-          //           filteredProductNames[index]
-          //               .productName
-          //               .toString());
-          //     }
-          //   });
-          // },
           icon: !(blankList.contains(
               filteredProductNames[index]
                   .productName
@@ -759,7 +620,6 @@ class _HomeScreenState extends State<HomeScreen> {
               'assets/images/heart.svg')
               : const Icon(CupertinoIcons.heart_fill,
               color: Colors.red),
-          //child:
         ),
       ],
     );
@@ -810,7 +670,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         .productprice));
               },
             ),
-           // const Spacer(flex: 1,),
+            const Spacer(flex: 1,),
             heartButton(index: index,onPressed: () {
               setState(() {
                 if (blankList.contains(
@@ -829,7 +689,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 }
               });
             },),
-           // const Spacer(flex: 1,),
+            const Spacer(flex: 1,),
           ],
         ),
       ),

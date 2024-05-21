@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'HomeScreenBloc/home_screen_bloc.dart';
 import 'ProductBloc/product_bloc.dart';
-import 'navigationbarsecondscreen.dart';
+import 'pages/navigationbarsecondscreen.dart';
 Future<void> main() async {
   await ScreenUtil.ensureScreenSize();
   runApp(const MyApp());

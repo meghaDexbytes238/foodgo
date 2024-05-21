@@ -131,8 +131,8 @@ import 'package:footgo/widgets.dart';
 
 import 'product_bloc.dart';
 import 'product_event.dart';
-import '../app_color.dart';
-import '../app_string.dart';
+import '../config/app_color.dart';
+import '../config/app_string.dart';
 
 
 class ProductScreen extends StatefulWidget {
@@ -185,9 +185,8 @@ class _ProductScreenState extends State<ProductScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-color: Colors.purple,
-                    height: MediaQuery.of(context).size.height/2.9,
+                  SizedBox(
+                    height: 280,
                     width: MediaQuery.of(context).size.width,
                     child: Row(
                       children: [
@@ -196,7 +195,6 @@ color: Colors.purple,
                             margin: EdgeInsets.only( right: 50.sp),
                             alignment: Alignment.centerLeft,
                             decoration: const BoxDecoration(
-                                color: Colors.red,
                                 image: DecorationImage(
                                     image: AssetImage('assets/images/pngwingImg.png'),fit: BoxFit.fill
                                 )
@@ -204,7 +202,6 @@ color: Colors.purple,
                           ),
                         ),
                         Container(
-                          color: Colors.blue,
                             padding: EdgeInsets.only(right: 15),
                             width: MediaQuery.of(context).size.width/2.5,
                             child: Column(
@@ -322,7 +319,7 @@ Widget textSpan(){
       maxLines: 4,
       text: TextSpan(
         text: AppString.customize,
-        style: TextStyle(fontWeight: FontWeight.bold,fontFamily: 'Roboto',color: AppColor.black,),
+        style: TextStyle(fontWeight: FontWeight.bold,fontFamily: 'Roboto',color: AppColor.black,fontSize: 16),
         children:  <TextSpan>[
           TextSpan(text: AppString.detail,style: const TextStyle(fontWeight: FontWeight.normal)),
         ],

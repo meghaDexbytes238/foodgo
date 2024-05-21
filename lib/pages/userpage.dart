@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:footgo/widgets.dart';
 
-import 'app_string.dart';
+import '../config/app_string.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({super.key});
