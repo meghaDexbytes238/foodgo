@@ -1,5 +1,4 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,7 +17,7 @@ abstract class AllWidgets {
       textAlign: textAlign,
 
       maxLines: 2,
-      textHeightBehavior: TextHeightBehavior(applyHeightToFirstAscent: true),
+      textHeightBehavior: const TextHeightBehavior(applyHeightToFirstAscent: true),
       softWrap: true,
 
       overflow: TextOverflow.fade,
@@ -39,7 +38,7 @@ abstract class AllWidgets {
       itemBuilder: (context, index) {
         return Card(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          margin: EdgeInsets.only(top: 15,bottom: 15,right: 10),
+          margin: const EdgeInsets.only(top: 15,bottom: 15,right: 10),
           elevation: 8,
           color: AppColor.black,
           child: Column(
@@ -65,9 +64,7 @@ abstract class AllWidgets {
               ),
             ],
           ),
-
         );
-
       },
       itemCount: name.length,
 
@@ -75,14 +72,6 @@ abstract class AllWidgets {
   }
  static Widget customButton({required IconData icon , required void Function()? onPressed}){
     return  Container(
-      child: IconButton.filledTonal(
-        onPressed: onPressed,
-        icon:  Icon(icon,color: AppColor.white,),
-        style: ButtonStyle(
-          shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
-          backgroundColor: MaterialStatePropertyAll(AppColor.red),
-        ),
-      ),
       decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -91,6 +80,14 @@ abstract class AllWidgets {
             ),
           ],
           borderRadius: BorderRadius.all(Radius.circular(10))
+      ),
+      child: IconButton.filledTonal(
+        onPressed: onPressed,
+        icon:  Icon(icon,color: AppColor.white,),
+        style: ButtonStyle(
+          shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
+          backgroundColor: MaterialStatePropertyAll(AppColor.red),
+        ),
       ),
     );
   }

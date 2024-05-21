@@ -48,20 +48,20 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
         ),
       ),
       bottomNavigationBar: SizedBox(
-        height: MediaQuery.of(context).viewInsets.bottom == 0 ? 100.sp : 0,
+        height: MediaQuery.of(context).viewInsets.bottom == 0 ? 90.sp : 0,
         child: BottomAppBar(
           color: AppColor.red,
-          height: MediaQuery.of(context).size.height / 10,
+        //  height: MediaQuery.of(context).size.height / 100,
           shape: const CircularNotchedRectangle(),
           notchMargin: 10.0.sp,
           clipBehavior: Clip.antiAlias,
           child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisSize: MainAxisSize.max,
               children: [
                 Expanded(
-                  child: GestureDetector(
+                  child: InkWell(
+                    splashFactory: NoSplash.splashFactory,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -84,7 +84,8 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
+                  child: InkWell(
+                    splashFactory: NoSplash.splashFactory,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -107,7 +108,8 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
+                  child: InkWell(
+                    splashFactory: NoSplash.splashFactory,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -130,7 +132,8 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
+                  child: InkWell(
+                    splashFactory: NoSplash.splashFactory,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [

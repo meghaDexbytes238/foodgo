@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:footgo/pages/navigationbar_screen.dart';
 import 'HomeScreenBloc/home_screen_bloc.dart';
 import 'ProductBloc/product_bloc.dart';
-import 'pages/navigationbarsecondscreen.dart';
 Future<void> main() async {
   await ScreenUtil.ensureScreenSize();
   runApp(const MyApp());
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home:  BottomNavigationBarScreen(),
+          home:  const BottomNavigationBarScreen(),
         ),
       ),
     );
