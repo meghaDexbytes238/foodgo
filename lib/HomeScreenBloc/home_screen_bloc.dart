@@ -19,12 +19,6 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       }
     });
 
-    // on((event, emit) {
-    //   if(event is LoadedChipsListEvent){
-    //     selectedIndex = event.index;
-    //     emit(ChipsUpdatedState(chipsLst: choiceItemsList));
-    //   }
-    // });
   }
 
 }

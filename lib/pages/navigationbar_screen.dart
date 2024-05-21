@@ -22,7 +22,6 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
       pageController.jumpToPage(index);
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +35,7 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
         ),
         child: FloatingActionButton(
           isExtended: false,
-          elevation: 10,
+          elevation: 15,
           backgroundColor: Color(0xffEF2A39),
           shape: const CircleBorder(),
           onPressed: () {},
@@ -66,15 +65,9 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
                       children: [
                         const Image(
                             image: AssetImage('assets/images/home.png')),
-                        selectedIndex == 0
-                            ? Text(
-                                '.',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w900,
-                                    fontSize: 15,
-                                    color: AppColor.white),
-                              )
-                            : Text(''),
+                        SizedBox(height: 10,),
+                        selectedIndex == 0 ? CircleAvatar(backgroundColor: Colors.white,radius: 2.0,): CircleAvatar(backgroundColor: Colors.white,radius: 0,),
+                        SizedBox(height: 10,),
                       ],
                     ),
                     onTap: () {
@@ -90,15 +83,9 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
                       children: [
                         const Image(
                             image: AssetImage('assets/images/user.png')),
-                        selectedIndex == 1
-                            ? Text(
-                                '.',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w900,
-                                    fontSize: 15,
-                                    color: AppColor.white),
-                              )
-                            : Text(''),
+                        SizedBox(height: 10,),
+                        selectedIndex == 1 ? CircleAvatar(backgroundColor: Colors.white,radius: 2.0,): CircleAvatar(backgroundColor: Colors.white,radius: 0,),
+                        SizedBox(height: 10,),
                       ],
                     ),
                     onTap: () {
@@ -114,15 +101,9 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
                       children: [
                         const Image(
                             image: AssetImage('assets/images/comment.png')),
-                        selectedIndex == 2
-                            ? Text(
-                                '.',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w900,
-                                    fontSize: 15,
-                                    color: AppColor.white),
-                              )
-                            : Text(''),
+                        SizedBox(height: 10,),
+                        selectedIndex == 2 ? CircleAvatar(backgroundColor: Colors.white,radius: 2.0,): CircleAvatar(backgroundColor: Colors.white,radius: 0,),
+                        SizedBox(height: 10,),
                       ],
                     ),
                     onTap: () {
@@ -138,15 +119,10 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
                       children: [
                         const Image(
                             image: AssetImage('assets/images/heart.png')),
-                        selectedIndex == 3
-                            ? Text(
-                                '.',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w900,
-                                    fontSize: 15,
-                                    color: AppColor.white),
-                              )
-                            : Text(''),
+                        SizedBox(height: 10,),
+                        selectedIndex == 3 ? CircleAvatar(backgroundColor: Colors.white,radius: 2.0,): CircleAvatar(backgroundColor: Colors.white,radius: 0,),
+                        SizedBox(height: 10,),
+
                       ],
                     ),
                     onTap: () {
