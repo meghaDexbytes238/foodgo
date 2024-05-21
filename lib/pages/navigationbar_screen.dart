@@ -51,7 +51,6 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
         height: MediaQuery.of(context).viewInsets.bottom == 0 ? 90.sp : 0,
         child: BottomAppBar(
           color: AppColor.red,
-        //  height: MediaQuery.of(context).size.height / 100,
           shape: const CircularNotchedRectangle(),
           notchMargin: 10.0.sp,
           clipBehavior: Clip.antiAlias,
