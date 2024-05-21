@@ -640,6 +640,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            const Spacer(flex: 1,),
             GestureDetector(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
